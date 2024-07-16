@@ -27,9 +27,9 @@ public class _23SortAndMergeArray {
 		int a1[]= {10,4,6,20,31,2,5};
 		int a2[]= {14,2,35,7,12,6};
 		int[] mergedArray=merged(a1,a2);
-		System.out.println(Arrays.toString(a1));
-		System.out.println(Arrays.toString(a2));
-		System.out.println(Arrays.toString(mergedArray));
+		System.out.println("a1: "+Arrays.toString(a1));
+		System.out.println("a2: "+Arrays.toString(a2));
+		System.out.println("merged array: "+Arrays.toString(mergedArray));
 
 	}
 
