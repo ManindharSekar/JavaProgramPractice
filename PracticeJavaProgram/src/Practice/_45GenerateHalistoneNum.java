@@ -16,8 +16,8 @@ public class _45GenerateHalistoneNum {
 		}
 		
 		if(num%2!=0) {						
-			a=3*num+1;                    /*For Even  N = N / 2    								
-			System.out.println(a);        For Odd N = 3 * N + 1 */
+			a=3*num+1;                    //For Even  N = N / 2    								
+			System.out.println(a);        //For Odd N = 3 * N + 1 
 			meth(a);
 		}else {
 			b=num/2;
