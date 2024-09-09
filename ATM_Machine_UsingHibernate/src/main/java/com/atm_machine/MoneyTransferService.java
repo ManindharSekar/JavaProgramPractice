@@ -41,6 +41,7 @@ public class MoneyTransferService {
 			statements.setBalance(newBalance);
 			session.save(statements);
 			transaction.commit();
+			sessionFactory.close();
 			reciveMoney(accountNumber, reciverAccountNumber, transferAmount);
 
 			loginService.listATMOptions(accountNumber);
@@ -76,6 +77,7 @@ public class MoneyTransferService {
 		statements.setBalance(newBalance1);
 		session.save(statements);
 		transaction.commit();
+		sessionFactory.close();
 
 	}
 

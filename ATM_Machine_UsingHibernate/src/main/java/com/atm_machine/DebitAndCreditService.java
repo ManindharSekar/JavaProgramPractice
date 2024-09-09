@@ -41,6 +41,7 @@ public class DebitAndCreditService {
 			statements.setBalance(newBalance);
 			session.save(statements);
 			transaction.commit();
+			sessionFactory.close();
 		} else {
 			System.out.println("input not valid.");
 			loginService.listATMOptions(accountNumber);
@@ -77,6 +78,7 @@ public class DebitAndCreditService {
 				statements.setBalance(newBalance);
 				session.save(statements);
 				transaction.commit();
+				sessionFactory.close();
 			} else {
 				System.out.println("insufficient balance retry");
 

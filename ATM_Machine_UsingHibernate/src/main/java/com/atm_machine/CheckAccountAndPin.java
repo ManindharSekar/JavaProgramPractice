@@ -21,6 +21,7 @@ public class CheckAccountAndPin {
 			return false;
 		}
 		transaction.commit();
+		sessionFactory.close();
 		return true;
 	}
 
@@ -37,6 +38,7 @@ public class CheckAccountAndPin {
 			return false;
 		}
 		transaction.commit();
+		sessionFactory.close();
 		return true;
 	}
 }
