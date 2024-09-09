@@ -26,7 +26,6 @@ public class MoneyTransferService {
 		List resultList = selectQuery.getResultList();
 		if (!resultList.isEmpty()) {
 			currentBalance = (double) resultList.get(0);
-			System.out.println(currentBalance);
 		}
 		if (currentBalance > 0 && currentBalance >= transferAmount && transferAmount > 0) {
 			double newBalance = currentBalance - transferAmount;
@@ -41,13 +40,14 @@ public class MoneyTransferService {
 			statements.setBalance(newBalance);
 			session.save(statements);
 			transaction.commit();
-			sessionFactory.close();
+			
 			reciveMoney(accountNumber, reciverAccountNumber, transferAmount);
 
 			loginService.listATMOptions(accountNumber);
 		} else {
 			System.out.println("insufficient balance.");
 			loginService.listATMOptions(accountNumber);
+			sessionFactory.close();
 		}
 
 	}
@@ -77,6 +77,10 @@ public class MoneyTransferService {
 		statements.setBalance(newBalance1);
 		session.save(statements);
 		transaction.commit();
+		System.out.println("----------------------------------------------------");
+		System.out.println("---your amount has been transfered successfully---");
+		System.out.println("***Amount transferd to"+reciverAccountNumber+"***");
+		System.out.println("----------------------------------------------------");
 		sessionFactory.close();
 
 	}

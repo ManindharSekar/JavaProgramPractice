@@ -41,13 +41,13 @@ public class DebitAndCreditService {
 			statements.setBalance(newBalance);
 			session.save(statements);
 			transaction.commit();
-			sessionFactory.close();
+			
 		} else {
 			System.out.println("input not valid.");
 			loginService.listATMOptions(accountNumber);
 		}
 		loginService.listATMOptions(accountNumber);
-
+		sessionFactory.close();
 	}
 
 	public void withdrawl(String accountNumber, double debitAmount, LoginService loginService) {
@@ -78,7 +78,7 @@ public class DebitAndCreditService {
 				statements.setBalance(newBalance);
 				session.save(statements);
 				transaction.commit();
-				sessionFactory.close();
+				
 			} else {
 				System.out.println("insufficient balance retry");
 
@@ -89,6 +89,7 @@ public class DebitAndCreditService {
 			loginService.listATMOptions(accountNumber);
 		}
 		loginService.listATMOptions(accountNumber);
+		sessionFactory.close();
 	}
-
+	
 }

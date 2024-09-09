@@ -16,6 +16,7 @@ public class AddAccountsService {
 		Transaction transaction = session.beginTransaction();
 		Scanner s = new Scanner(System.in);
 		AccountDetails ad = new AccountDetails();
+		System.out.println("***Add new Accounts***");
 		System.out.println("Enter Account Number");
 		String acc_no = s.next();
 		ad.setAccount_no(acc_no);
@@ -31,6 +32,8 @@ public class AddAccountsService {
 		accountDetails.setAtm_pin(pin);
 		session.save(accountDetails);
 		transaction.commit();
+		System.out.println("***Account has been added successfully***");
+		sessionFactory.close();
 
 	}
 

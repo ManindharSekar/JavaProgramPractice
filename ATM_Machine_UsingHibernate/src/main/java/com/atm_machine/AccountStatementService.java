@@ -27,9 +27,10 @@ public class AccountStatementService {
 		} else {
 			System.out.println("your balance is nill");
 		}
-		sessionFactory.close();
+		
 		LoginService loginService = new LoginService();
 		loginService.listATMOptions(accountNumber);
+		sessionFactory.close();
 
 	}
 
@@ -57,6 +58,7 @@ public class AccountStatementService {
 		sessionFactory.close();
 
 		loginService.listATMOptions(accountNumber);
+		sessionFactory.close();
 
 	}
 

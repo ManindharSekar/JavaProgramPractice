@@ -8,7 +8,7 @@ public class StartATM {
 	public static void main(String[] args) {
 		System.out.println("Welcome To My Bank ATM.");
 
-		System.out.println("1.User/n2.Admin");
+		System.out.println("1.User\n2.Admin");
 		Scanner scanner = new Scanner(System.in);
 		try {
 			int chooseOption = scanner.nextInt();
