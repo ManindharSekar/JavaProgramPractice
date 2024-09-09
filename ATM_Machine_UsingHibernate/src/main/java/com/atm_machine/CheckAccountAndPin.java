@@ -20,7 +20,6 @@ public class CheckAccountAndPin {
 		while (results.isEmpty()) {
 			return false;
 		}
-		transaction.commit();
 		return true;
 	}
 
@@ -34,9 +33,10 @@ public class CheckAccountAndPin {
 		query.setParameter("j", accountNumber);
 		List<AccountDetails> resultList = query.getResultList();
 		while (resultList.isEmpty()) {
+			
 			return false;
+			
 		}
-		transaction.commit();
 		return true;
 	}
 }
