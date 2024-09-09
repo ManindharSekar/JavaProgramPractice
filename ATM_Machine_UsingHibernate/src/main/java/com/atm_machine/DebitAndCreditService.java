@@ -29,19 +29,19 @@ public class DebitAndCreditService {
 			System.out.println(currentBalance);
 		}
 		newBalance = currentBalance + creditAmount;
-		if(creditAmount>0) {
+		if (creditAmount > 0) {
 
-		AccountDetails accountDetails = new AccountDetails();
-		accountDetails.setAccount_no(accountNumber);
-		Statements statements = new Statements();
-		statements.setAcc_noum(accountDetails);
-		statements.setTime(LocalTime.now());
-		statements.setDate(LocalDate.now());
-		statements.setCredit(creditAmount);
-		statements.setBalance(newBalance);
-		session.save(statements);
-		transaction.commit();
-		}else {
+			AccountDetails accountDetails = new AccountDetails();
+			accountDetails.setAccount_no(accountNumber);
+			Statements statements = new Statements();
+			statements.setAcc_noum(accountDetails);
+			statements.setTime(LocalTime.now());
+			statements.setDate(LocalDate.now());
+			statements.setCredit(creditAmount);
+			statements.setBalance(newBalance);
+			session.save(statements);
+			transaction.commit();
+		} else {
 			System.out.println("input not valid.");
 			loginService.listATMOptions(accountNumber);
 		}
@@ -79,7 +79,7 @@ public class DebitAndCreditService {
 				transaction.commit();
 			} else {
 				System.out.println("insufficient balance retry");
-				
+
 				loginService.listATMOptions(accountNumber);
 			}
 		} else {

@@ -13,7 +13,8 @@ public class MoneyTransferService {
 	double currentBalance;
 	double currentBalance1;
 
-	public void sendMoney(String accountNumber, String reciverAccountNumber, double transferAmount,LoginService loginService) {
+	public void sendMoney(String accountNumber, String reciverAccountNumber, double transferAmount,
+			LoginService loginService) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -27,7 +28,7 @@ public class MoneyTransferService {
 			currentBalance = (double) resultList.get(0);
 			System.out.println(currentBalance);
 		}
-		if (currentBalance > 0 && currentBalance >= transferAmount&&transferAmount>0) {
+		if (currentBalance > 0 && currentBalance >= transferAmount && transferAmount > 0) {
 			double newBalance = currentBalance - transferAmount;
 			AccountDetails accountDetails = new AccountDetails();
 			accountDetails.setAccount_no(accountNumber);
@@ -41,7 +42,7 @@ public class MoneyTransferService {
 			session.save(statements);
 			transaction.commit();
 			reciveMoney(accountNumber, reciverAccountNumber, transferAmount);
-			
+
 			loginService.listATMOptions(accountNumber);
 		} else {
 			System.out.println("insufficient balance.");

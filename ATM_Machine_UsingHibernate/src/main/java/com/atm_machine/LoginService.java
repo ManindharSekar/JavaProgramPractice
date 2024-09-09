@@ -52,9 +52,8 @@ public class LoginService {
 			MoneyTransferService moneyTransferService = new MoneyTransferService();
 			CheckAccountAndPin checkAccountAndPin = new CheckAccountAndPin();
 			AddAccountsService addAccountsService = new AddAccountsService();
-			LoginService loginService=new LoginService();
-			System.out.println(
-					"1.Withdrawal \n2.Deposit \n3.Balance \n4.Money_Transfer \n5.Statement \n6.Exit");
+			LoginService loginService = new LoginService();
+			System.out.println("1.Withdrawal \n2.Deposit \n3.Balance \n4.Money_Transfer \n5.Statement \n6.Exit");
 			System.out.println("Choose any option");
 			Scanner scanner = new Scanner(System.in);
 			int chooseOption = scanner.nextInt();
@@ -63,12 +62,12 @@ public class LoginService {
 			case 1:
 				System.out.println("Enter Withdrawl Amount");
 				double debitAmount = scanner.nextDouble();
-				debitAndCreditService.withdrawl(accountNumber, debitAmount,loginService);
+				debitAndCreditService.withdrawl(accountNumber, debitAmount, loginService);
 				break;
 			case 2:
 				System.out.println("Enter your deposit amount");
 				double creditAmount = scanner.nextDouble();
-				debitAndCreditService.deposit(accountNumber, creditAmount,loginService);
+				debitAndCreditService.deposit(accountNumber, creditAmount, loginService);
 				break;
 			case 3:
 				accountStatementService.viewBalance(accountNumber);
@@ -87,7 +86,7 @@ public class LoginService {
 				}
 				break;
 			case 5:
-				accountStatementService.printStatement(accountNumber,loginService);
+				accountStatementService.printStatement(accountNumber, loginService);
 				break;
 			case 6:
 				System.out.println("Exited");

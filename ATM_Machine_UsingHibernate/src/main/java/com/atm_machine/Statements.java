@@ -29,6 +29,7 @@ public class Statements {
 	public LocalDate getDate() {
 		return date;
 	}
+
 	public void setDate(LocalDate localDate) {
 		this.date = localDate;
 	}
