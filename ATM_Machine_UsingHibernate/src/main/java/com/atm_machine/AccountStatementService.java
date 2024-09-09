@@ -11,9 +11,7 @@ import org.hibernate.query.Query;
 public class AccountStatementService {
 
 	public void viewBalance(String accountNumber) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		Query<Statement> query = session.createQuery(
 				"select balance from Statements where acc_num.account_no=:i order by id desc", Statement.class);
@@ -30,14 +28,12 @@ public class AccountStatementService {
 		
 		LoginService loginService = new LoginService();
 		loginService.listATMOptions(accountNumber);
-		sessionFactory.close();
+		session.close();
 
 	}
 
 	public void printStatement(String accountNumber, LoginService loginService) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		Query query = session.createQuery(
 				"select acc_num.name,acc_num.account_no,date,time,credit,transaction,debit,balance from Statements where acc_num.account_no=:i");
@@ -55,10 +51,10 @@ public class AccountStatementService {
 		}
 		System.out.println(
 				"_______________________________________________________________________________________________________________");
-		sessionFactory.close();
+
 
 		loginService.listATMOptions(accountNumber);
-		sessionFactory.close();
+		session.close();
 
 	}
 

@@ -51,7 +51,6 @@ public class LoginService {
 			AccountStatementService accountStatementService = new AccountStatementService();
 			MoneyTransferService moneyTransferService = new MoneyTransferService();
 			CheckAccountAndPin checkAccountAndPin = new CheckAccountAndPin();
-			AddAccountsService addAccountsService = new AddAccountsService();
 			LoginService loginService = new LoginService();
 			System.out.println("1.Withdrawal \n2.Deposit \n3.Balance \n4.Money_Transfer \n5.Statement \n6.Exit");
 			System.out.println("Choose any option");

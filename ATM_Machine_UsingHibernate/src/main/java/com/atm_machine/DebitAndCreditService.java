@@ -15,8 +15,7 @@ public class DebitAndCreditService {
 	double newBalance;
 
 	public void deposit(String accountNumber, double creditAmount, LoginService loginService) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
 		Query<Double> selectQuery = session.createQuery(
@@ -48,12 +47,11 @@ public class DebitAndCreditService {
 			loginService.listATMOptions(accountNumber);
 		}
 		loginService.listATMOptions(accountNumber);
-		sessionFactory.close();
+		session.close();
 	}
 
 	public void withdrawl(String accountNumber, double debitAmount, LoginService loginService) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
 		Query<Double> selectQuery = session.createQuery(
@@ -91,7 +89,7 @@ public class DebitAndCreditService {
 			loginService.listATMOptions(accountNumber);
 		}
 		loginService.listATMOptions(accountNumber);
-		sessionFactory.close();
+		session.close();
 	}
 	
 }

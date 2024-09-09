@@ -15,8 +15,7 @@ public class MoneyTransferService {
 
 	public void sendMoney(String accountNumber, String reciverAccountNumber, double transferAmount,
 			LoginService loginService) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
 		Query selectQuery = session
@@ -47,14 +46,13 @@ public class MoneyTransferService {
 		} else {
 			System.out.println("insufficient balance.");
 			loginService.listATMOptions(accountNumber);
-			sessionFactory.close();
+			session.close();
 		}
 
 	}
 
 	public void reciveMoney(String accountNumber, String reciverAccountNumber, double transferAmount) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 
 		Query selectQuery = session
@@ -79,9 +77,9 @@ public class MoneyTransferService {
 		transaction.commit();
 		System.out.println("----------------------------------------------------");
 		System.out.println("---your amount has been transfered successfully---");
-		System.out.println("***Amount transferd to"+reciverAccountNumber+"***");
+		System.out.println("***Amount transferd to "+reciverAccountNumber+"***");
 		System.out.println("----------------------------------------------------");
-		sessionFactory.close();
+		session.close();
 
 	}
 

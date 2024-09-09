@@ -10,9 +10,7 @@ import org.hibernate.query.Query;
 public class CheckAccountAndPin {
 
 	public boolean validateAccount(String accountNumber) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		 Session session = HibernateUtil.getSessionFactory().openSession();
 		String hql = "FROM AccountDetails WHERE account_no =:i";
 		Query<AccountDetails> query = session.createQuery(hql, AccountDetails.class);
 		query.setParameter("i", accountNumber);
@@ -24,9 +22,7 @@ public class CheckAccountAndPin {
 	}
 
 	public boolean validatePin(String accountNumber, String pinNumber) {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		 Session session = HibernateUtil.getSessionFactory().openSession();
 		String selectQuery = "From AccountDetails Where atm_pin=:i and account_no=:j";
 		Query<AccountDetails> query = session.createQuery(selectQuery, AccountDetails.class);
 		query.setParameter("i", pinNumber);

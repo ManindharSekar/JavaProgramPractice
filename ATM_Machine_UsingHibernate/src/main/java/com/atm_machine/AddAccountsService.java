@@ -11,8 +11,7 @@ import org.hibernate.query.Query;
 public class AddAccountsService {
 
 	public void addAccount() {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		 Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		Scanner s = new Scanner(System.in);
 		AccountDetails ad = new AccountDetails();
@@ -33,7 +32,7 @@ public class AddAccountsService {
 		session.save(accountDetails);
 		transaction.commit();
 		System.out.println("***Account has been added successfully***");
-		sessionFactory.close();
+		session.close();
 
 	}
 
