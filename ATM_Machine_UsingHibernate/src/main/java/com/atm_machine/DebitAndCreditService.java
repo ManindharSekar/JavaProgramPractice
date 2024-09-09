@@ -41,6 +41,7 @@ public class DebitAndCreditService {
 			statements.setBalance(newBalance);
 			session.save(statements);
 			transaction.commit();
+			System.out.println("***Amount has been successfully credited in your account***");
 			
 		} else {
 			System.out.println("input not valid.");
@@ -78,6 +79,7 @@ public class DebitAndCreditService {
 				statements.setBalance(newBalance);
 				session.save(statements);
 				transaction.commit();
+				System.out.println("***Take Ammount***");
 				
 			} else {
 				System.out.println("insufficient balance retry");
